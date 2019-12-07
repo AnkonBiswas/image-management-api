@@ -1,100 +1,209 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html>
     <head>
+        <title>Title</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="uikit/css/uikit.min.css" />
+          <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-        <title>Laravel</title>
-
-        <!-- Fonts -->
-        <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
-
-        <!-- Styles -->
-        <style>
-            html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
-            }
-
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
-        </style>
+        <script src="uikit/js/uikit.min.js"></script>
+        <script src="uikit/js/uikit-icons.min.js"></script>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+            <div class="uk-container">
+       <nav class="uk-navbar-container" uk-navbar>
+    <div class="uk-navbar-left">
+  
+        <ul class="uk-navbar-nav">
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
 
-            <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+        </ul>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
-            </div>
-        </div>
+    </div>
+</nav>
+
+
+
+<div class="uk-h3">Slide</div>
+<div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="images">
+
+</div>
+
+
+
+
+</div>
+
+
+ <script>
+
+// function myCategory(id) {
+
+//     $("#images").empty();
+  
+// (function() {
+//   var imageApi = "http://localhost:8000/api/123456/"+id;
+//   $.getJSON( imageApi, {
+//     tagmode: "any",
+//     format: "json"
+//   })
+//     .done(function( data ) {
+
+//       // $.each( data, function( i, item ) {
+//       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+//       //   // if ( i === 3 ) {
+//       //   //   return false;
+//       //   // }
+
+//       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
+
+//       // });
+// html='';
+//       for (var i = data.length - 1; i >= 0; i--) {
+//         console.log(data[i]['name']);
+//         html += '<div><a class="uk-inline" href="'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img src="'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
+//       }
+
+//       $('#images').append(html);
+//     });
+// })();
+
+// }
+
+
+
+// // (function() {
+// //   var imageApi = "http://localhost:8000/apicate";
+// //   $.getJSON( imageApi, {
+// //     tagmode: "any",
+// //     format: "json"
+// //   })
+// //     .done(function( data ) {
+
+// //       // $.each( data, function( i, item ) {
+// //       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+// //       //   // if ( i === 3 ) {
+// //       //   //   return false;
+// //       //   // }
+
+// //       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
+
+// //       // });
+// // html='';
+// //       for (var i = data.length - 1; i >= 0; i--) {
+// //          if (data[i]['parent']==0 ) {
+// //             id = data[i]['id'];
+// //         html += '<li ><a onclick="myCategory('+data[i]['id']+')">'+data[i]['cname']+'</a>';
+
+
+           
+
+
+// //                  html+='<div class="uk-navbar-dropdown"><ul class="uk-nav uk-navbar-dropdown-nav">';
+
+
+// //                 (function() {
+// //                       var imageApi = "http://localhost:8000/apicate";
+// //                       $.getJSON( imageApi, {
+// //                         tagmode: "any",
+// //                         format: "json"
+// //                       })
+// //                         .done(function( data1 ) {
+
+// //                           // $.each( data, function( i, item ) {
+// //                           //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+// //                           //   // if ( i === 3 ) {
+// //                           //   //   return false;
+// //                           //   // }
+
+// //                           // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
+
+// //                           // });
+// //                           for (var j = data1.length - 1; j >= 0; j--) {
+
+// //                              if (id==data1[j]['parent'] ) {
+
+
+// //                                         console.log(data1[j]['cname']+id);
+
+
+
+// //                             html+='<li class="uk-active"><a onclick="myCategory('+data1[j]['id']+')">'+data1[j]['cname']+'</a></li>';
+
+// //                         }
+
+// //                           }
+
+
+// //                          html+='</ul></div>';
+
+// //                         });
+// //                     })();
+
+
+
+
+// //             }
+
+
+// //         html+='</li>';
+// //       }
+
+// //       $('.uk-navbar-nav').append(html);
+// //     });
+// // })();
+
+
+// (function() {
+//   var imageApi = "http://localhost:8000/api/123456";
+//   $.getJSON( imageApi, {
+//     tagmode: "any",
+//     format: "json"
+//   })
+//     .done(function( data ) {
+
+//       // $.each( data, function( i, item ) {
+//       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
+//       //   // if ( i === 3 ) {
+//       //   //   return false;
+//       //   // }
+
+//       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
+
+//       // });
+// html='';
+//       for (var i = data.length - 1; i >= 0; i--) {
+//         console.log(data[i]['name']);
+//         html += '<div><a class="uk-inline" href="'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img src="'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
+//       }
+
+//       $('#images').append(html);
+//     });
+// })();
+
+
+
+
+// (function() {
+//   var imageApi = "http://localhost:8000/apicate";
+
+
+//   $('.uk-navbar-nav').load(imageApi);
+
+// })();
+
+api_key="123456";
+// </script>
+
+
+        <script src="js/main.js"></script>
+
+
+
+
     </body>
 </html>
+
+
+
