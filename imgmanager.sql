@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 04, 2019 at 10:35 PM
+-- Generation Time: Dec 08, 2019 at 02:02 AM
 -- Server version: 10.4.6-MariaDB
 -- PHP Version: 7.3.8
 
@@ -52,14 +52,14 @@ INSERT INTO `categories` (`id`, `cname`, `parent`) VALUES
 
 CREATE TABLE `imagelists` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `category` int(11) NOT NULL,
-  `sort` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `title` varchar(255) DEFAULT NULL,
+  `category` int(11) DEFAULT 1,
+  `sort` int(11) NOT NULL DEFAULT 5,
   `userid` int(11) NOT NULL,
   `date_added` timestamp NOT NULL DEFAULT current_timestamp(),
   `date_modified` timestamp NOT NULL DEFAULT current_timestamp(),
-  `des` varchar(255) NOT NULL
+  `des` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -67,12 +67,16 @@ CREATE TABLE `imagelists` (
 --
 
 INSERT INTO `imagelists` (`id`, `name`, `title`, `category`, `sort`, `userid`, `date_added`, `date_modified`, `des`) VALUES
-(1, 'https://getuikit.com/docs/images/photo.jpg', 'weqwe', 1, 1, 1, '2019-12-04 15:43:48', '2019-12-04 15:43:48', ''),
-(2, 'https://getuikit.com/docs/images/dark.jpg', 'weqwe', 4, 1, 1, '2019-12-04 15:43:48', '2019-12-04 15:43:48', ''),
-(3, 'https://getuikit.com/docs/images/light.jpg', 'weqwe', 2, 1, 1, '2019-12-04 15:43:48', '2019-12-04 15:43:48', ''),
-(4, 'https://getuikit.com/docs/images/photo.jpg', 'weqwe', 3, 1, 1, '2019-12-04 15:43:48', '2019-12-04 15:43:48', ''),
-(6, 'blackfriday.png', 'About', 1, 1, 1, '2019-12-04 15:23:51', '2019-12-04 15:23:51', 'wqevwqgeytyqwv e  bwqmehuwqioequwy'),
-(7, 'blackfriday.png', 'About', 1, 1, 1, '2019-12-04 15:24:24', '2019-12-04 15:24:24', 'wqevwqgeytyqwv e  bwqmehuwqioequwy');
+(50, 'selective-focus-photography-of-brown-leafed-trees-1590551.jpg', NULL, 1, 2, 4, '2019-12-07 17:43:10', '2019-12-07 17:43:10', NULL),
+(51, 'an-open-red-flush-door-3303491.jpg', NULL, 2, 3, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(52, 'assorted-color-dice-decors-3311235.jpg', NULL, 4, 4, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(53, 'assorted-cooked-foods-3071816.jpg', NULL, 3, 5, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(54, 'flatlay-photography-of-vegetables-1437655.jpg', NULL, 4, 6, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(55, 'l-opticien-building-shopfront-during-day-3293415.jpg', NULL, 2, 7, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(56, 'moon-in-the-sky-3284294.jpg', NULL, 1, 8, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(57, 'person-in-desert-3320155.jpg', NULL, 2, 8, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(58, 'selective-focus-photography-of-brown-leafed-trees-1590551.jpg', NULL, 2, 7, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL),
+(59, 'solar-panel-on-rocky-mountain-during-day-3312555.jpg', NULL, 2, 9, 4, '2019-12-07 18:00:52', '2019-12-07 18:00:52', NULL);
 
 -- --------------------------------------------------------
 
@@ -92,7 +96,10 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `username`, `password`, `api_key`) VALUES
-(1, 'admin', 'admin', '123456');
+(1, 'admin', 'admin', '123456'),
+(2, 'ffff', 'ffff', '34325345'),
+(3, 'test', 'test', '3adcf18f6801a29b246e443e62dc6c27'),
+(4, 'saif', 'saif', 'eae5884acd695f3cdf4d36f6a18ac5f3');
 
 --
 -- Indexes for dumped tables
@@ -130,13 +137,13 @@ ALTER TABLE `categories`
 -- AUTO_INCREMENT for table `imagelists`
 --
 ALTER TABLE `imagelists`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
