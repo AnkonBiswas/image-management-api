@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -47,6 +48,26 @@ class HomeController extends Controller
     		return redirect('/login');
     	}
     }
+
+     function add(){
+        return view('home.add');
+    }
+    function store(Request $request){
+
+        $str=rand(); 
+       $result = md5($str);
+
+        $user = new User();
+        $user->username = $request->username;
+        $user->password =$request->password;
+        $user->api_key =$result;
+        if($user->save()){
+            return redirect()->route('login.index');
+        }else{
+            return redirect()->route('home.add');
+        }
+    
+       }
 }
 
 

@@ -14,10 +14,14 @@ class LoginController extends Controller
 	
 		$user = DB::table('users')->where('username', $request->username)
 					->where('password', $request->password)
-					->get();
-		if(count($user) > 0){
-			$request->session()->put('uname', $request->input('username'));
-		
+					->first();
+					print_r($user);
+		if($user->id > 0){
+			$request->session()->put('id', $user->id);
+					$request->session()->put('uname', $user->username);
+										$request->session()->put('api_key', $user->api_key);
+
+
 			return redirect()->route('home.index');
 		}else{
 			$request->session()->flash('msg', 'invalid username/password');

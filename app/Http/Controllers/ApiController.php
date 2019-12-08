@@ -37,6 +37,41 @@ class ApiController extends Controller
            return response()->json($api);
    }
 
+
+
+      function sort($key,$cate,$sort,$sv){
+    header('Access-Control-Allow-Origin: *');  
+
+
+    if ($cate>0) {
+
+       $api = DB::table('imagelists')
+            ->join('users', 'users.id', '=', 'imagelists.userid')
+            ->join('categories', 'categories.id', '=', 'imagelists.category')
+            ->where('categories.id', $cate)
+            ->where('users.api_key', $key)
+            ->select('imagelists.*', 'categories.cname')
+            ->orderBy($sort, $sv)
+            ->get();
+      
+    }else{
+       $api = DB::table('imagelists')
+            ->join('users', 'users.id', '=', 'imagelists.userid')
+            ->join('categories', 'categories.id', '=', 'imagelists.category')
+            ->where('users.api_key', $key)
+            ->select('imagelists.*', 'categories.cname')
+            ->orderBy($sort, $sv)
+            ->get();
+    }
+
+         
+
+           return response()->json($api);
+   }
+
+
+
+
       function getCate(){
    	header('Access-Control-Allow-Origin: *');  
 

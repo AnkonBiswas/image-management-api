@@ -26,7 +26,9 @@
 	<div class="uk-container">
 
 	<div class="uk-card uk-card-body">
-	<h1>Welcome home! {{ session('uname') }}</h1>
+	<h1>Welcome home! {{ session('uname') }}</h1><br>
+      Your Api Key : <input type="text" value="{{ session('api_key') }}">
+
 	<br>
 	<p uk-margin>
 	<a href="{{ route('logout.index') }}" class="uk-button uk-button-primary">logout</a>

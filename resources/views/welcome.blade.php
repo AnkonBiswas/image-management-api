@@ -9,6 +9,17 @@
 
         <script src="uikit/js/uikit.min.js"></script>
         <script src="uikit/js/uikit-icons.min.js"></script>
+        <style>
+           .uk-card-default {
+   
+    height: 300px;
+    width: 100%;
+}
+
+.uk-card-body {
+    padding: 0;
+}
+        </style>
     </head>
     <body>
             <div class="uk-container">
@@ -23,9 +34,38 @@
     </div>
 </nav>
 
-
+<input type="hidden" name="cate" value="0" id="category">
 
 <div class="uk-h3">Slide</div>
+
+<div class="uk-column-1-2">
+    <p>
+        <div class="uk-margin">
+
+<select id="sort" name="sort" id="" onchange="sort()" class="uk-select">
+    <option value="id">Id</option>
+    <option value="sort">Sort</option>
+        <option value="name">Name</option>
+                <option value="title">Title</option>
+                <option value="date_added">Date Added</option>
+                <option value="date_modified">Date Modified</option>
+
+
+</select>
+</div>
+</p>
+<p>
+        <div class="uk-margin">
+
+Asc/Desc
+<select id="sv" name="sv" id="" onchange="sort()" class="uk-select">
+    <option value="asc">Asc</option>
+    <option value="desc">Desc</option>
+</select>
+</div></p>
+
+
+</div>
 <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="images">
 
 </div>
@@ -37,163 +77,7 @@
 
 
  <script>
-
-// function myCategory(id) {
-
-//     $("#images").empty();
-  
-// (function() {
-//   var imageApi = "http://localhost:8000/api/123456/"+id;
-//   $.getJSON( imageApi, {
-//     tagmode: "any",
-//     format: "json"
-//   })
-//     .done(function( data ) {
-
-//       // $.each( data, function( i, item ) {
-//       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-//       //   // if ( i === 3 ) {
-//       //   //   return false;
-//       //   // }
-
-//       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
-
-//       // });
-// html='';
-//       for (var i = data.length - 1; i >= 0; i--) {
-//         console.log(data[i]['name']);
-//         html += '<div><a class="uk-inline" href="'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img src="'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
-//       }
-
-//       $('#images').append(html);
-//     });
-// })();
-
-// }
-
-
-
-// // (function() {
-// //   var imageApi = "http://localhost:8000/apicate";
-// //   $.getJSON( imageApi, {
-// //     tagmode: "any",
-// //     format: "json"
-// //   })
-// //     .done(function( data ) {
-
-// //       // $.each( data, function( i, item ) {
-// //       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-// //       //   // if ( i === 3 ) {
-// //       //   //   return false;
-// //       //   // }
-
-// //       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
-
-// //       // });
-// // html='';
-// //       for (var i = data.length - 1; i >= 0; i--) {
-// //          if (data[i]['parent']==0 ) {
-// //             id = data[i]['id'];
-// //         html += '<li ><a onclick="myCategory('+data[i]['id']+')">'+data[i]['cname']+'</a>';
-
-
-           
-
-
-// //                  html+='<div class="uk-navbar-dropdown"><ul class="uk-nav uk-navbar-dropdown-nav">';
-
-
-// //                 (function() {
-// //                       var imageApi = "http://localhost:8000/apicate";
-// //                       $.getJSON( imageApi, {
-// //                         tagmode: "any",
-// //                         format: "json"
-// //                       })
-// //                         .done(function( data1 ) {
-
-// //                           // $.each( data, function( i, item ) {
-// //                           //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-// //                           //   // if ( i === 3 ) {
-// //                           //   //   return false;
-// //                           //   // }
-
-// //                           // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
-
-// //                           // });
-// //                           for (var j = data1.length - 1; j >= 0; j--) {
-
-// //                              if (id==data1[j]['parent'] ) {
-
-
-// //                                         console.log(data1[j]['cname']+id);
-
-
-
-// //                             html+='<li class="uk-active"><a onclick="myCategory('+data1[j]['id']+')">'+data1[j]['cname']+'</a></li>';
-
-// //                         }
-
-// //                           }
-
-
-// //                          html+='</ul></div>';
-
-// //                         });
-// //                     })();
-
-
-
-
-// //             }
-
-
-// //         html+='</li>';
-// //       }
-
-// //       $('.uk-navbar-nav').append(html);
-// //     });
-// // })();
-
-
-// (function() {
-//   var imageApi = "http://localhost:8000/api/123456";
-//   $.getJSON( imageApi, {
-//     tagmode: "any",
-//     format: "json"
-//   })
-//     .done(function( data ) {
-
-//       // $.each( data, function( i, item ) {
-//       //   // $( "<img>" ).attr( "src", item.media.m ).appendTo( "#images" );
-//       //   // if ( i === 3 ) {
-//       //   //   return false;
-//       //   // }
-
-//       // html = '<div><a class="uk-inline" href="'+item.name+'" data-caption="Caption 1"><img src="'+item.name+'" alt="'+item.title+'"></a></div>';
-
-//       // });
-// html='';
-//       for (var i = data.length - 1; i >= 0; i--) {
-//         console.log(data[i]['name']);
-//         html += '<div><a class="uk-inline" href="'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img src="'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
-//       }
-
-//       $('#images').append(html);
-//     });
-// })();
-
-
-
-
-// (function() {
-//   var imageApi = "http://localhost:8000/apicate";
-
-
-//   $('.uk-navbar-nav').load(imageApi);
-
-// })();
-
-api_key="123456";
+api_key="eae5884acd695f3cdf4d36f6a18ac5f3";
 // </script>
 
 
