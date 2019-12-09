@@ -170,7 +170,7 @@ $imgsrc="upload/".$request->image;
          $image->save();
 
 
-        echo 'success';
+       return redirect()->route('image.index');
 
     }
 
@@ -209,7 +209,7 @@ $img = Image::make($imgsrc);
          $image->save();
 
 
-        echo 'success';
+       return redirect()->route('image.index');
 
     }
 
