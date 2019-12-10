@@ -170,7 +170,14 @@ td {
 			<td>
 				<select name="category" id="" class="uk-select">
 					  @foreach($cates as $cate)
-					<option value="{{ $cate->id }}">{{ $cate->cname }}</option>
+
+                      @if($cate->id == $image->category)     
+					<option value="{{ $cate->id }}" selected="selected">{{ $cate->cname }}</option>
+
+                    @else
+                    <option value="{{ $cate->id }}">{{ $cate->cname }}</option>
+
+                     @endif
 
 					 @endforeach
 				</select>

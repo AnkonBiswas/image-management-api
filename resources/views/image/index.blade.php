@@ -116,8 +116,17 @@ form#ajax {
 </div>
 
    <div class="uk-margin uk-grid-small uk-child-width-auto uk-grid">
+    @if( session('layout') == 'simple')         
+
             <label><input class="uk-radio" type="radio" name="layout" checked value="simple"> Simple</label>
-            <label><input class="uk-radio" type="radio" name="layout" value="mosaic"> Mosaic</label>
+                        <label><input class="uk-radio" type="radio" name="layout" value="mosaic"> Mosaic</label>
+
+                        @else
+            <label><input class="uk-radio" type="radio" name="layout" value="simple"> Simple</label>
+
+            <label><input class="uk-radio" type="radio" name="layout"  checked value="mosaic"> Mosaic</label>
+
+            @endif
         </div>
 
   <div class="uk-margin">
@@ -146,7 +155,7 @@ form#ajax {
             <td>{{ $cate->id }}</td>
             <td><img width="50px" src="upload/{{ $cate->name }}" alt=""></td>
             <td>{{ $cate->title }}</td>
-            <td>{{ $cate->category }}</td>
+            <td>{{ $cate->cname }}</td>
             <td>{{ $cate->des }}</td>
             <td>{{ $cate->sort }}</td>
             <td>{{ $cate->date_added }}</td>

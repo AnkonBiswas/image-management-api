@@ -15,7 +15,9 @@ class ImageController extends Controller
     function index(Request $request){
 
 
-    	$api = DB::table('imagelists')->where('userid', $request->session()->get('id'))->get();
+    	$api = DB::table('imagelists')
+        ->join('categories', 'categories.id', '=', 'imagelists.category')
+        ->where('userid', $request->session()->get('id'))->get();
 
 
     	return view('image.index')->with('cates', $api);
