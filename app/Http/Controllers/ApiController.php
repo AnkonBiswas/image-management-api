@@ -16,6 +16,8 @@ class ApiController extends Controller
        //     ->join('categories', 'categories.id', '=', 'imagelists.category')
             ->where('users.api_key', $key)
             ->where('imagelists.enable', 1)
+            ->orderBy('imagelists.sort', 'asc')
+
             ->select('imagelists.*')
 
             ->get();
@@ -54,7 +56,7 @@ class ApiController extends Controller
             ->where('imagelists.enable', 1)
             ->where('users.api_key', $key)
             ->select('imagelists.*', 'categories.cname')
-            ->orderBy($sort, $sv)
+   ->orderBy('sort', 'desc')
             ->get();
       
     }else{

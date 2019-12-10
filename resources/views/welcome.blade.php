@@ -39,8 +39,9 @@
         <div class="uk-margin">
 
 <select id="sort" name="sort" id="" onchange="sort()" class="uk-select">
+        <option value="sort">Sort</option>
+
     <option value="id">Id</option>
-    <option value="sort">Sort</option>
         <option value="name">Name</option>
                 <option value="title">Title</option>
                 <option value="date_added">Date Added</option>
@@ -55,8 +56,9 @@
 
 Asc/Desc
 <select id="sv" name="sv" id="" onchange="sort()" class="uk-select">
+        <option value="desc">Desc</option>
+
     <option value="asc">Asc</option>
-    <option value="desc">Desc</option>
 </select>
 </div></p>
 

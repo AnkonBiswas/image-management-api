@@ -30,7 +30,7 @@ var cate = document.getElementById("category").value;
 html='';
        for (var i = 0; i< data.length; i++) {
         j= i+1;
-        html += '<div class="gride image-grid-'+j+'"><a class="uk-inline uk-card uk-card-default uk-card-body" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
+        html += '<div class="gride image-grid-'+data[i]['sort']+'"><a class="uk-inline uk-card uk-card-default uk-card-body" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
       }
 
       $('#images').append(html);
@@ -59,7 +59,7 @@ html='';
        for (var i = 0; i< data.length; i++) {
         j= i+1;
         console.log(data[i]['name']);
-        html += '<div class="gride image-grid-'+j+'"><a class="uk-inline uk-card uk-card-default uk-card-body" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
+        html += '<div class="gride image-grid-'+data[i]['sort']+'"><a class="uk-inline uk-card uk-card-default uk-card-body" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
       }
 
       $('#images').append(html);
@@ -82,7 +82,7 @@ html='';
       for (var i = 0; i< data.length; i++) {
         j= i+1;
         console.log(data[i]['name']);
-        html += '<div class=" gride image-grid-'+j+'"><a class="uk-inline" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
+        html += '<div class=" gride image-grid-'+data[i]['sort']+'"><a class="uk-inline" href="upload/'+data[i]['name']+'" data-caption="'+data[i]['title']+'"><img class="uk-card uk-card-default uk-card-body" src="upload/'+data[i]['name']+'" alt="'+data[i]['title']+'"></a></div>';
       }
 
       $('#images').append(html);
