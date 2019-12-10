@@ -7,8 +7,11 @@ use Illuminate\Support\Facades\DB;
 use App\Imagelist;
 use Image;
 
+
 class ImageController extends Controller
 {
+
+   
     function index(Request $request){
 
 
@@ -72,6 +75,20 @@ class ImageController extends Controller
 
     }
 
+    function enable($id,$value){
+
+                $image = Imagelist::find($id);
+                 $image->enable =$value;
+
+                  $image->save();
+
+
+                         return redirect()->route('image.index');
+
+
+
+    }
+
 
      function editimage($id,Request $request){
 
@@ -84,9 +101,40 @@ class ImageController extends Controller
         $image->sort =$request->sort;
         $image->userid = $request->session()->get('id');
         $image->des =$request->des;
+        if ($request->enable != null) {
+
+             $image->enable =1;
+            
+        }else{
+
+             $image->enable =0;
+
+        }
+       
+
+
+             $imgsrc="upload/".$request->pic;
+
+
+
+        if ($request->crop == 1) {
+
+
+             $img = Image::make($imgsrc);
+
+
+
+         $img->crop($request->width, $request->height,$request->image_x,$request->image_y);
+
+       // return $img->response('png');
+
+         $img->save($imgsrc);
+            
+        }
+
          $image->save();
 
-        return redirect()->route('image.index');
+        return redirect()->route('image.edit',$id);
 
     }
 
@@ -139,40 +187,71 @@ $img = Image::make($image)->resize(300, 200);
 
     }
 
-    function imagerotate($id){
+    function imagerotate($id,$value){
+
 
         $api = DB::table('imagelists')
         ->where('id', $id)
-        ->get();
-
-        return view('image.rotate')->with('images', $api);
-
-    }
-
-     function rotateimage($id,Request $request){
-
-$imgsrc="upload/".$request->image;
+        ->first();
+     $imgsrc="upload/".$api->name;
 
         $img = Image::make($imgsrc);
-        $imagename= "image-".(rand(1000000,9000000)) .'.png';
+       // $imagename= "image-".(rand(1000000,9000000)) .'.png';
 
 
 // rotate image 45 degrees clockwise
-        $img->rotate($request->rotate);
+
+        if ($value =='left') {
+
+             $img->rotate(90);
+            
+        }else{
+
+             $img->rotate(-90);
+
+        }
+       
 
 
        // return $img->response('png');
 
-         $img->save('upload/'.$imagename);
+         $img->save($imgsrc);
 
-        $image = Imagelist::find($id);
-        $image->name = $imagename;
-         $image->save();
+        // $image = Imagelist::find($id);
+        // $image->name = $imagename;
+        //  $image->save();
 
 
-       return redirect()->route('image.index');
+       return redirect()->route('image.edit',$id);
+
+       // return view('image.rotate')->with('images', $api);
 
     }
+
+//      function rotateimage($id,$value){
+
+// $imgsrc="upload/".$request->image;
+
+//         $img = Image::make($imgsrc);
+//         $imagename= "image-".(rand(1000000,9000000)) .'.png';
+
+
+// // rotate image 45 degrees clockwise
+//         $img->rotate($request->rotate);
+
+
+//        // return $img->response('png');
+
+//          $img->save('upload/'.$imagename);
+
+//         $image = Imagelist::find($id);
+//         $image->name = $imagename;
+//          $image->save();
+
+
+//        return redirect()->route('image.index');
+
+//     }
 
      function imagecrop($id){
 
@@ -217,6 +296,9 @@ $img = Image::make($imgsrc);
 
     function upload(Request $request){
 
+
+
+
      //   print_r($request);
     $images=array();
     if($files=$request->file('images')){
@@ -242,5 +324,40 @@ $img = Image::make($imgsrc);
 
       return redirect()->route('image.index');
     
+    }
+
+
+    function load(Request $request){
+
+
+        if ($request->layout) {
+
+            $request->session()->put('layout', $request->layout);
+
+            
+        }
+
+
+        header('Access-Control-Allow-Origin: *'); 
+
+        if ($request->search != null) {
+            $api = DB::table('imagelists')
+            ->join('categories', 'categories.id', '=', 'imagelists.category')
+            ->select('imagelists.*', 'categories.cname')
+             ->where('title','like', "%$request->search%")
+            ->orderBy($request->sort, $request->sv)
+            ->get();
+            
+        }else{
+            $api = DB::table('imagelists')
+            ->join('categories', 'categories.id', '=', 'imagelists.category')
+            ->select('imagelists.*', 'categories.cname')
+            ->orderBy($request->sort, $request->sv)
+            ->get();
+        }
+          
+
+            return response()->json($api);
+
     }
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Title</title>
+        <title>Image Galary</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="uikit/css/uikit.min.css" />
@@ -9,17 +9,11 @@
 
         <script src="uikit/js/uikit.min.js"></script>
         <script src="uikit/js/uikit-icons.min.js"></script>
-        <style>
-           .uk-card-default {
-   
-    height: 300px;
-    width: 100%;
-}
+                <link rel="stylesheet" href="css/galary.css" />
 
-.uk-card-body {
-    padding: 0;
-}
-        </style>
+
+        <style>
+           </style>
     </head>
     <body>
             <div class="uk-container">
@@ -37,6 +31,8 @@
 <input type="hidden" name="cate" value="0" id="category">
 
 <div class="uk-h3">Slide</div>
+
+
 
 <div class="uk-column-1-2">
     <p>
@@ -66,18 +62,30 @@ Asc/Desc
 
 
 </div>
-<div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="images">
+
+
+@if( session('layout') == 'simple')         
+           <div class="uk-child-width-1-3@m" uk-grid uk-lightbox="animation: slide" id="images" >
 
 </div>
+            @else
+<div  id="images" class="mosaic">
+
+</div>           @endif
+
+
 
 
 
 
 </div>
-
+<hr>
+<br>
+<hr>
+<div></div>
 
  <script>
-api_key="eae5884acd695f3cdf4d36f6a18ac5f3";
+api_key="123456";
 // </script>
 
 

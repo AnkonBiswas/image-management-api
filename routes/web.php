@@ -32,10 +32,12 @@ Route::get('/image/edit/{id}', 'ImageController@edit')->name('image.edit');
 Route::post('/image/edit/{id}', 'ImageController@editimage');
 
 Route::get('/image/resize/{id}', 'ImageController@resize')->name('image.resize');
+Route::get('/image/enable/{id}/{value}', 'ImageController@enable')->name('image.enable');
+
 //Route::post('/image/resize/{id}', 'LoginController@makeresize');
 
-Route::get('/image/rotate/{id}', 'ImageController@imagerotate')->name('image.rotate');
-Route::post('/image/rotate/{id}', 'ImageController@rotateimage');
+Route::get('/image/rotate/{id}/{value}', 'ImageController@imagerotate')->name('image.rotate');
+//Route::post('/image/rotate/{id}', 'ImageController@rotateimage');
 Route::get('/image/crop/{id}', 'ImageController@imagecrop')->name('image.crop');
 Route::post('/image/crop/{id}', 'ImageController@cropimage');
 Route::post('/image', 'ImageController@upload');
@@ -43,3 +45,5 @@ Route::post('/image', 'ImageController@upload');
 
 	Route::get('/register', 'HomeController@add')->name('home.add');
 			Route::post('/register', 'HomeController@store');
+
+Route::post('/image/load', 'ImageController@load');

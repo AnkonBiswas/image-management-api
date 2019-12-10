@@ -13,9 +13,10 @@ class ApiController extends Controller
 
         	$api = DB::table('imagelists')
             ->join('users', 'users.id', '=', 'imagelists.userid')
-            ->join('categories', 'categories.id', '=', 'imagelists.category')
+       //     ->join('categories', 'categories.id', '=', 'imagelists.category')
             ->where('users.api_key', $key)
-            ->select('imagelists.*', 'categories.cname')
+            ->where('imagelists.enable', 1)
+            ->select('imagelists.*')
 
             ->get();
 
@@ -29,6 +30,7 @@ class ApiController extends Controller
             ->join('users', 'users.id', '=', 'imagelists.userid')
             ->join('categories', 'categories.id', '=', 'imagelists.category')
             ->where('categories.id', $cate)
+            ->where('imagelists.enable', 1)
             ->where('users.api_key', $key)
             ->select('imagelists.*', 'categories.cname')
 
@@ -49,6 +51,7 @@ class ApiController extends Controller
             ->join('users', 'users.id', '=', 'imagelists.userid')
             ->join('categories', 'categories.id', '=', 'imagelists.category')
             ->where('categories.id', $cate)
+            ->where('imagelists.enable', 1)
             ->where('users.api_key', $key)
             ->select('imagelists.*', 'categories.cname')
             ->orderBy($sort, $sv)
@@ -59,6 +62,7 @@ class ApiController extends Controller
             ->join('users', 'users.id', '=', 'imagelists.userid')
             ->join('categories', 'categories.id', '=', 'imagelists.category')
             ->where('users.api_key', $key)
+            ->where('imagelists.enable', 1)
             ->select('imagelists.*', 'categories.cname')
             ->orderBy($sort, $sv)
             ->get();
